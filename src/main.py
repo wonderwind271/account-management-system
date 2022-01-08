@@ -42,16 +42,18 @@ while cmd!='q':
 
         ins_place=search_date(dates,new_date)
         records=row_insert(records,ins_place,newline)
-        print(records.to_string())
-        is_save=input("Save this change?(Y/N): ")
-        if is_save=='Y':
-            records.to_csv('account.csv',index=None,header=None)
-            print("save successfully")
-            records_data=np.array(records)
-        else:
-            print("The change is not saved.")
+        if not save_prompt(records,'account.csv'):
             records=pd.read_csv('account.csv',names=['item','price','date','method','note'])
-            print(records.to_string())
-        
+        records_data=np.array(records)
+
+    elif cmd=='del':
+        print(records.to_string())
+        del_line=int(input('please input the line you want to delete: '))
+        records=records.drop(del_line).reset_index(drop=True)
+
+        if not save_prompt(records,'account.csv'):
+            records=pd.read_csv('account.csv',names=['item','price','date','method','note'])
+        records_data=np.array(records)
+
 
 
