@@ -9,9 +9,9 @@ records.iloc[:,1]=records.iloc[:,1].map(float)
 records_data=np.array(records)
 # print(records_data)
 
-print("successfully read data, please input commands. Input help to get a manual for the commands")
+print("successfully read data, please input commands. Input \"help\" to get a manual for the commands")
 
-help_list=[]
+help_list=pd.read_csv('helpmanual.csv',names=['command','usage'])
 cmd=""
 print(records)
 

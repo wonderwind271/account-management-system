@@ -1,0 +1,5 @@
+add,add a new record
+del,delete a record
+help,show this help manual
+q,exit the system
+sum,calculate the sum of the money
