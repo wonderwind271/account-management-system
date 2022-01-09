@@ -1,6 +1,13 @@
 import pandas as pd
 import numpy as np
 from pdlibs import *
+import os
+
+
+if not os.path.exists('account.csv'):
+    print("Account not exist, creating a new acccount... ")
+    f=open('account.csv','w')
+    f.close()
 
 
 records=pd.read_csv('account.csv',names=['item','price','date','method','note'])
@@ -45,7 +52,7 @@ while cmd!='q':
         records=row_insert(records,ins_place,newline)
         if not save_prompt(records,'account.csv'):
             records=pd.read_csv('account.csv',names=['item','price','date','method','note'])
-            records.iloc[:,1]=records.iloc[:,1].map(float) 
+            records.iloc[:,1]=records.iloc[:,1].map(float) # turn str to float
         records_data=np.array(records)
 
     elif cmd=='del':
@@ -55,10 +62,13 @@ while cmd!='q':
 
         if not save_prompt(records,'account.csv'):
             records=pd.read_csv('account.csv',names=['item','price','date','method','note'])
-            records.iloc[:,1]=records.iloc[:,1].map(float) 
+            records.iloc[:,1]=records.iloc[:,1].map(float) # turn str to float
         records_data=np.array(records)
 
     elif cmd=='sum':
         sum_all=round(sum(records['price'].tolist()),2)
         print(sum_all)
+
+    else:
+        args=cmd.split(' ')
 
