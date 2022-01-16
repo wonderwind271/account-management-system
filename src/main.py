@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pdlibs import *
+from update import *
 import os
 
 
@@ -20,7 +21,7 @@ print("successfully read data, please input commands. Input \"help\" to get a ma
 
 help_list=pd.read_csv('helpmanual.csv',names=['command','usage'])
 cmd=""
-print(records)
+print(records.to_string())
 
 while cmd!='q':
     cmd=input("> ")
@@ -71,4 +72,4 @@ while cmd!='q':
 
     else:
         args=cmd.split(' ')
-
+        (success,records)=update(records,args,"account.csv")
