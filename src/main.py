@@ -70,4 +70,4 @@ while cmd != 'q':
 
     else:
         args = cmd.split(' ')
-        success, records = update(records, args, "account.csv")
+        (success, records) = update(records, args, "account.csv")

@@ -41,7 +41,7 @@ def search_date(dates: List[str], tar: str) -> int:
 def save_prompt(rec: pd.DataFrame, fileName: str) -> bool:
     is_save = input("Save this change?(Y/N): ")
     if is_save == 'Y':
-        rec.to_csv('account.csv', index=None, header=None)
+        rec.to_csv('account.csv', index=False, header=False)
         print("save successfully")
         print(rec.to_string())
         return True
