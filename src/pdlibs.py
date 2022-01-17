@@ -18,7 +18,8 @@ def str2date(str_date: str):
 
 
 def search_date(dates: List[str], tar: str) -> int:
-    # search tar from dates, assume dates is sorted. If there's such element, return its index. If not, return the index of the smallest element that is bigger then tar
+    # search tar from dates, assume dates is sorted. If there's such element, return its index.
+    # If not, return the index of the smallest element that is bigger then tar
     # if tar is biggest, return the size of the dates
     list_tar = str2date(tar)
     list_dates = list(map(str2date, dates))

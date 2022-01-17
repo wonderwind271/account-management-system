@@ -1,5 +1,8 @@
 add,add a new record
 del,delete a record
+del [line 1] [line 2] ... [line n], delete several records
 help,show this help manual
+l/list, list all records
+l/list [line 1] [line 2] ... [line n], list several records
 q,exit the system
 sum,calculate the sum of the money

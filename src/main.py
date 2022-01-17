@@ -5,7 +5,7 @@ from update import *
 import os
 
 if not os.path.exists('account.csv'):
-    print("Account not exist, creating a new acccount... ")
+    print("Account not exist, creating a new account... ")
     f = open('account.csv', 'w')
     f.close()
 
@@ -70,4 +70,4 @@ while cmd != 'q':
 
     else:
         args = cmd.split(' ')
-        (success, records) = update(records, args, "account.csv")
+        success, records = update(records, args, "account.csv")
