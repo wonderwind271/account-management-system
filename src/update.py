@@ -14,7 +14,16 @@ def update(record: pd.DataFrame, args: List[str], fileName: str) -> Tuple[bool, 
     elif args[0] == 'l' or args[0] == 'list':
         list_lines = list(map(int, args[1:]))
 
-        print(record.iloc[list_lines].to_string())
+        print(record.loc[list_lines].to_string())
+        return (True, record)
+    elif args[0] == 'sum':
+        # arg[1]: index, item, price, date, method, note
+        if args[1] == 'index':
+            sum_lines = list(map(int, args[2:]))
+            sum_all = round(sum(record.loc[sum_lines]['price'].tolist()), 2)
+            print(sum_all)
+        elif args[1] == 'item':
+            pass
         return (True, record)
 
     else:
