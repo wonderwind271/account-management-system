@@ -1,6 +1,7 @@
 from typing import List, Tuple
 import pandas as pd
 from pdlibs import save_prompt
+from pandas.core.common import flatten
 import numpy as np
 
 
@@ -25,12 +26,16 @@ def update(record: pd.DataFrame, args: List[str], fileName: str) -> Tuple[bool, 
         elif args[1] == 'item':
             sum_lines = []
             sum_feature = args[2:]
+            # "_" -> " "
+            for i in range(len(sum_feature)):
+                sum_feature[i] = sum_feature[i].replace('_', ' ')
+            sum_feature = list(flatten(sum_feature))
             for i in range(record.shape[0]):
                 if (record.loc[i]['item'] in sum_feature):
                     sum_lines.append(i)
             sum_all = round(sum(record.loc[sum_lines]['price'].tolist()), 2)
-            # Todo: deal with space problem
             print(sum_all)
+
         return (True, record)
 
     else:
