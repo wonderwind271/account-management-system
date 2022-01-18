@@ -22,13 +22,12 @@ def update(record: pd.DataFrame, args: List[str], fileName: str) -> Tuple[bool, 
             sum_lines = list(map(int, args[2:]))
             sum_all = round(sum(record.loc[sum_lines]['price'].tolist()), 2)
             print(sum_all)
-        elif args[1] == 'item':
-            sum_lines = []
+        elif args[1] in ['item', 'price', 'date', 'method', 'note']:
             sum_feature = args[2:]
             # "_" -> " "
             for i in range(len(sum_feature)):
                 sum_feature[i] = sum_feature[i].replace('_', ' ')
-            sum_lines = find_require(record, 'item', sum_feature)
+            sum_lines = find_require(record, args[1], sum_feature)
             sum_all = round(sum(record.loc[sum_lines]['price'].tolist()), 2)
             print(sum_all)
 

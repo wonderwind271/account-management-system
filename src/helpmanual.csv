@@ -6,3 +6,4 @@ l/list, list all records
 l/list [line 1] [line 2] ... [line n], list several records
 q,exit the system
 sum,calculate the sum of the money
+sum [field name] [val 1] [val 2] ... [val n], sum several records

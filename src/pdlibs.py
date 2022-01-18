@@ -53,6 +53,7 @@ def save_prompt(rec: pd.DataFrame, fileName: str) -> bool:
 
 
 def find_require(rec: pd.DataFrame, fieldName: str, feature) -> List[int]:
+    # find record index with respect to elements of "feature" in field
     res = []
     for i in range(rec.shape[0]):
         if (rec.loc[i][fieldName] in feature):
