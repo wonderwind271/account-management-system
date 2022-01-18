@@ -50,3 +50,11 @@ def save_prompt(rec: pd.DataFrame, fileName: str) -> bool:
         rec = pd.read_csv('account.csv', names=['item', 'price', 'date', 'method', 'note'])
         print(rec.to_string())
         return False
+
+
+def find_require(rec: pd.DataFrame, fieldName: str, feature) -> List[int]:
+    res = []
+    for i in range(rec.shape[0]):
+        if (rec.loc[i][fieldName] in feature):
+            res.append(i)
+    return res
