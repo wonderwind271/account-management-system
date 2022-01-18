@@ -25,11 +25,15 @@ def update(record: pd.DataFrame, args: List[str], fileName: str) -> Tuple[bool, 
         elif args[1] in ['item', 'price', 'date', 'method', 'note']:
             list_feature = args[2:]
             # "_" -> " "
-            for i in range(len(list_feature)):
-                list_feature[i] = list_feature[i].replace('_', ' ')
+            if args[1] == 'price':
+                list_feature = list(map(float, list_feature))
+            else:
+                for i in range(len(list_feature)):
+                    list_feature[i] = list_feature[i].replace('_', ' ')
             list_lines = find_require(record, args[1], list_feature)
             list_all = record.loc[list_lines]
             print(list_all)
+            return (True, record)
     elif args[0] == 'sum':
         # arg[1]: index, item, price, date, method, note
         if args[1] == 'index':
@@ -39,8 +43,11 @@ def update(record: pd.DataFrame, args: List[str], fileName: str) -> Tuple[bool, 
         elif args[1] in ['item', 'price', 'date', 'method', 'note']:
             sum_feature = args[2:]
             # "_" -> " "
-            for i in range(len(sum_feature)):
-                sum_feature[i] = sum_feature[i].replace('_', ' ')
+            if args[1] == 'price':
+                sum_feature = list(map(float, sum_feature))
+            else:
+                for i in range(len(sum_feature)):
+                    sum_feature[i] = sum_feature[i].replace('_', ' ')
             sum_lines = find_require(record, args[1], sum_feature)
             sum_all = round(sum(record.loc[sum_lines]['price'].tolist()), 2)
             print(sum_all)
