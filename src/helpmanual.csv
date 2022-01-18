@@ -4,6 +4,7 @@ del [line 1] [line 2] ... [line n], delete several records
 help,show this help manual
 l/list, list all records
 l/list [line 1] [line 2] ... [line n], list several records
+l/list [field name] [val 1] [val 2] ... [val n], list several records
 q,exit the system
 sum,calculate the sum of the money
 sum [field name] [val 1] [val 2] ... [val n], sum several records
