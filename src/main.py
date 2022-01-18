@@ -31,9 +31,9 @@ while cmd != 'q':
     elif cmd == 'add':
         print('creating new record...')
         new_item = input("item name: ")
-        new_price = input("item price: ")
+        new_price = float(input("item price: "))
         new_date = input("purchase date in syntax yy-mm-dd: ")
-        # todo: check and fix the date syntax
+        # todo: check and fix input syntax
         new_method = input("payment method: ")
         new_note = input("other notation: ")
         if new_note == '':
@@ -51,7 +51,7 @@ while cmd != 'q':
         records = row_insert(records, ins_place, newline)
         if not save_prompt(records, 'account.csv'):
             records = pd.read_csv('account.csv', names=['item', 'price', 'date', 'method', 'note'])
-            records.iloc[:, 1] = records.iloc[:, 1].map(float)  # turn str to float
+            # records.iloc[:, 1] = records.iloc[:, 1].map(float)  # turn str to float
         records_data = np.array(records)
 
     elif cmd == 'del':
