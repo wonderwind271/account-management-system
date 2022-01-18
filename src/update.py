@@ -11,11 +11,25 @@ def update(record: pd.DataFrame, args: List[str], fileName: str) -> Tuple[bool, 
         record = record.drop(del_lines).reset_index(drop=True)
         save_prompt(record, fileName)
         return (True, record)
-    elif args[0] == 'l' or args[0] == 'list':
+    elif (args[0] == 'l' or args[0] == 'list') and args[1].isdigit():
         list_lines = list(map(int, args[1:]))
 
         print(record.loc[list_lines].to_string())
         return (True, record)
+    elif args[0] == 'l' or args[0] == 'list':
+        # arg[1]: index, item, price, date, method, note
+        if args[1] == 'index':
+            list_lines = list(map(int, args[2:]))
+            list_all = record.loc[list_lines]
+            print(list_all.to_string())
+        elif args[1] in ['item', 'price', 'date', 'method', 'note']:
+            list_feature = args[2:]
+            # "_" -> " "
+            for i in range(len(list_feature)):
+                list_feature[i] = list_feature[i].replace('_', ' ')
+            list_lines = find_require(record, args[1], list_feature)
+            list_all = record.loc[list_lines]
+            print(list_all)
     elif args[0] == 'sum':
         # arg[1]: index, item, price, date, method, note
         if args[1] == 'index':
