@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from pdlibs import *
 from update import *
+from pltlibs import *
 import os
 
 if not os.path.exists('account.csv'):
@@ -67,6 +68,9 @@ while cmd != 'q':
     elif cmd == 'sum':
         sum_all = round(sum(records['price'].tolist()), 2)
         print(sum_all)
+
+    elif cmd == 'plot':
+        plotPartInAll(records.iloc[[0]], records)  # test
 
     else:
         args = cmd.split(' ')
