@@ -1,5 +1,4 @@
 # practical functions related to pandas that may use several times
-from typing import List
 import pandas as pd
 import numpy as np
 
@@ -17,7 +16,7 @@ def str2date(str_date: str):
     return list(map(int, str_date.split('-')))
 
 
-def search_date(dates: List[str], tar: str) -> int:
+def search_date(dates: list[str], tar: str) -> int:
     # search tar from dates, assume dates is sorted. If there's such element, return its index.
     # If not, return the index of the smallest element that is bigger then tar
     # if tar is biggest, return the size of the dates
@@ -52,7 +51,7 @@ def save_prompt(rec: pd.DataFrame, fileName: str) -> bool:
         return False
 
 
-def find_require(rec: pd.DataFrame, fieldName: str, feature) -> List[int]:
+def find_require(rec: pd.DataFrame, fieldName: str, feature) -> list[int]:
     # find record index with respect to elements of "feature" in field
     res = []
     for i in range(rec.shape[0]):

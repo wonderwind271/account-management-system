@@ -72,6 +72,9 @@ while cmd != 'q':
     elif cmd == 'plot':
         plotPartInAll(records.iloc[[0]], records)  # test
 
+    elif cmd == 'plots':
+        plotPartsInAll([records.iloc[[0]], records.iloc[[1]]], records)  # test 2
+
     else:
         args = cmd.split(' ')
         (success, records) = update(records, args, "account.csv")
