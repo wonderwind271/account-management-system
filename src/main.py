@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from pdlibs import *
 from update import *
+from view import *
 from pltlibs import *
 import os
 
@@ -77,4 +78,7 @@ while cmd != 'q':
 
     else:
         args = cmd.split(' ')
-        (success, records) = update(records, args, "account.csv")
+        if(args[0] == 'plot'):
+            plot(records, args)
+        else:
+            (success, records) = update(records, args, "account.csv")
